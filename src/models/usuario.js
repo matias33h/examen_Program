@@ -13,10 +13,15 @@ const usuarioSchema = new Schema({
         type: String,
        
     },
-    active: {
+    isActive: {
         type: Boolean,
         
         default: true,
+    },
+
+    role:{
+        type: String,
+        defaul:"user"
     }
 })
 module.exports=model('Usuario',usuarioSchema);
