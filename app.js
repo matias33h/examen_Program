@@ -4,13 +4,13 @@ const express= require('express')
 const cors =require('cors')
 const app=express()
 
-const conexion = require('./db/database')
+const conexion = require('./src/db/database')
 conexion();
 
 app.use(express.json())
 
-app.use(require("./routes/tareas.routes"))
-app.use(require("./routes/user.routes"))
+app.use(require("./src/routes/tareas.routes"))
+app.use(require("./src/routes/user.routes"))
 
 
 puerto=process.env.PORT || 3000
