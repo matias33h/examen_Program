@@ -12,6 +12,7 @@ app.use(express.json())
 
 app.use(require("./src/routes/tareas.routes"))
 app.use(require("./src/routes/user.routes"))
+app.use(require("./src/routes/authRutas"))
 
 
 puerto=process.env.PORT || 3000

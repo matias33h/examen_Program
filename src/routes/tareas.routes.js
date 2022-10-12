@@ -5,13 +5,14 @@ const {
     postTareas,
     putTareas,
     deleteTareas,
-} = require("../controllers/tareas.controllers") //importamos los datos de home controllers
+} = require("../controllers/tareas.controllers"); //importamos los datos de home controllers
+const validarJWT = require("../midelware/validarJWT");
 
 
 router.get("/tarea", getTareas)
-router.post("/tarea", postTareas)
-router.put('/tarea/:id', putTareas)
-router.delete('/tarea/:id', deleteTareas)
+router.post("/tarea",validarJWT, postTareas)
+router.put('/tarea/:id',validarJWT,putTareas)
+router.delete('/tarea/:id',validarJWT, deleteTareas)
 // router.put("/actualizar", putTareas)
 // router.delete("/eliminar", deleteTareas)
 

@@ -20,7 +20,7 @@ try{
 
 // se compruba la validez del token, si es valido, se obtiene la id del usuario del mismo
 
-const{uid}= await jwt.verify(token,procces.env.SECRET)
+const{uid}= await jwt.verify(token,process.env.SECRET) 
 //se busca el usuario en la base de dato  para saber si pertenece al sistema
 
 const usuario=await User.findById(uid)

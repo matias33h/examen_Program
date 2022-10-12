@@ -6,7 +6,7 @@ const generarJWT =(uid)=>{
 return new Promise((resolve, reject)=>{
 
 //genera el token con id de usuario y el secreto
- jwt.sign(uid,procces.env.SECRET,{
+ jwt.sign(uid,process.env.SECRET,{
 
 expiresIn:"7h"
 

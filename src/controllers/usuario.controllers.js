@@ -1,6 +1,6 @@
 
 const user = require("../models/usuario")
-
+const bcrypt=require("bcrypt")
 const ctrlUsuarios={}
 
 // Controlador para obtener todos los usuarios de la Base de Datos.
@@ -28,10 +28,13 @@ ctrlUsuarios.postUsuarios = async (req, res) => {
     // Se obtienen los datos enviados por método POST
     const { username, password, email } = req.body;
 
+const newPassword=bcrypt.hashSync(password,10)
+
+
     // Se instancia un nuevo documento de MongoDB para luego ser guardado
     const newUsuario = new user({
         username,
-        password,
+        password: newPassword,
         email
     })
 
