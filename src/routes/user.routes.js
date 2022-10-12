@@ -2,12 +2,18 @@ const router=require("express").Router()
 
 
 const {
-    getUsuario,
-    postUsuario,
+    getUsuarios,
+    getById,
+    postUsuarios,
+    putUsuarios,
+    deleteUsuarios
 
 }=require("../controllers/usuario.controllers")
 
-router.get("/consulta",getUsuario)
-router.post("/insertar",postUsuario)
+router.get("/usuario",getUsuarios)
+router.get("/usuario/:id",getById)
+router.post("/usuario",postUsuarios)
+router.put("/usuario/:id",putUsuarios)
+router.delete("/usuario/:id",deleteUsuarios)
 
 module.exports= router;

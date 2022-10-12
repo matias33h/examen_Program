@@ -1,5 +1,5 @@
 
-const user = require("../models/tareas")
+const user = require("../models/usuario")
 
 const ctrlUsuarios={}
 
@@ -11,6 +11,17 @@ ctrlUsuarios.getUsuarios = async (req, res) => {
     // Se devuelve al cliente un arreglo con los datos de los usuarios.
     return res.json(usuario)
 };
+
+// conrolador getbyid
+ctrlUsuarios.getById = async (req, res) => {
+    // Se consultan todos los documentos de la base de datos.
+    const id=req.params.id;
+    const usuario = await user.findOne({$and:[{_id:id},{active:true}]});
+
+    // Se devuelve al cliente un arreglo con los datos de los usuarios.
+    return res.json(usuario)
+};
+
 
 // Controlador para crear nuevo usuario en la Base de Datos.
 ctrlUsuarios.postUsuarios = async (req, res) => {
@@ -44,7 +55,7 @@ try {
 
     const userUpdate= await user.findByIdAndUpdate(id,{username, password, email})
     
-    const usermodifificad = await task.findById(id) //para que me traiga la actualizacion actual
+    const usermodifificad = await user.findById(id) //para que me traiga la actualizacion actual
     
     return res.json({
         "suarioSinModificar": userUpdate,
