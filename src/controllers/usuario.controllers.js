@@ -17,7 +17,7 @@ ctrlUsuarios.getById = async (req, res) => {
     // Se consultan todos los documentos de la base de datos.
     const id=req.params.id;
     const usuario = await user.findOne({$and:[{_id:id},{active:true}]});
-
+ 
     // Se devuelve al cliente un arreglo con los datos de los usuarios.
     return res.json(usuario)
 };

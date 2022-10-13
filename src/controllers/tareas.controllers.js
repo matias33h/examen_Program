@@ -12,6 +12,19 @@ ctrlTareas.getTareas = async (req, res) => {
     return res.json(tareas)
 };
 
+// conrolador getbyid
+ctrlTareas.getTareaById = async (req, res) => {
+    // Se consultan todos los documentos de la base de datos.
+    const id=req.params.id;
+    const tarea= await task.findOne({$and:[{_id:id},{active:true}]});
+ 
+    // Se devuelve al cliente un arreglo con los datos de los usuarios.
+    return res.json(tarea)
+};
+
+
+
+
 // Controlador para crear nuevo usuario en la Base de Datos.
 ctrlTareas.postTareas = async (req, res) => {
     // Se obtienen los datos enviados por método POST
