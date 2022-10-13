@@ -1,0 +1,4 @@
+# examen_Program
+CREAR UNA CARPETA Y CLONAR EL REPOSITORIO
+GIT CLONE https://github.com/matias33h/examen_Program
+INSTALAR LAS DEPENDENCIAS CON : NPM INSTALL
