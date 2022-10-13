@@ -4,7 +4,7 @@ const router= require("express").Router();  //Router es para crear  la ruta
 
 const {
     getTareas,
-    getTareaById,
+    getTareabyUser,
     postTareas,
     putTareas,
     deleteTareas,
@@ -14,9 +14,9 @@ const validarJWT = require("../midelware/validarJWT");
 
 
 
-router.post("/tarea", postTareas)
-router.get("/tarea",[validarJWT],getTareas)
-router.get("/tarea/:id",[validarJWT],getTareaById)
+// router.post("/tareas", postTareas)
+router.get("/tareas",[validarJWT],getTareas)
+router.get("/tarea/",[validarJWT],getTareabyUser)
 router.post('/tarea/',[validarJWT],postTareas)
 router.put('/tarea/:id',[validarJWT],putTareas)
 router.delete('/tarea/:id',[validarJWT],deleteTareas)

@@ -30,21 +30,13 @@ const TareasShema = new Schema({
 
     },
 
-    role: {
-        type: String,
-        default: 'user'
-
-    },
-
     idUser:{
         type: Schema.Types.ObjectId,
-        ref: 'Usuario',
-        default:"user"
+        ref: 'Usuarios'
     }
 
-
-
-
+},{
+    versionKey: false
 })
 
 module.exports = model('tareas', TareasShema);

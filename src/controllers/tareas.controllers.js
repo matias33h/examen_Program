@@ -5,21 +5,27 @@ const ctrlTareas={}
 
 // Controlador para obtener todos los usuarios de la Base de Datos.
 ctrlTareas.getTareas = async (req, res) => {
+   
     // Se consultan todos los documentos de la base de datos.
     const tareas = await task.find({active:true});
-
+    
+    
     // Se devuelve al cliente un arreglo con los datos de los usuarios.
     return res.json(tareas)
 };
 
+
+
+
 // conrolador getbyid
-ctrlTareas.getTareaById = async (req, res) => {
-    // Se consultan todos los documentos de la base de datos.
-    const id=req.params.id;
-    const tarea= await task.findOne({$and:[{_id:id},{active:true}]});
+ctrlTareas.getTareabyUser = async (req, res) => {
+    const idUsuario= req.user._id
+
+    const tareaUser= await task.find({$and:[{idUser:idUsuario},{active:true}]})
  
+    return res.json(tareaUser)
     // Se devuelve al cliente un arreglo con los datos de los usuarios.
-    return res.json(tarea)
+
 };
 
 
@@ -28,14 +34,15 @@ ctrlTareas.getTareaById = async (req, res) => {
 // Controlador para crear nuevo usuario en la Base de Datos.
 ctrlTareas.postTareas = async (req, res) => {
     // Se obtienen los datos enviados por método POST
-    const { fecha, categoria, descripcion, titulo } = req.body;
+    const { categoria, descripcion, titulo } = req.body;
+    const idUsuario = req.user._id 
 
     // Se instancia un nuevo documento de MongoDB para luego ser guardado
     const newTarea = new task({
-        fecha,
         categoria,
         descripcion,
-        titulo
+        titulo,
+        idUser: idUsuario
     })
 
     // Se almacena en la base de datos con método asícrono .save()

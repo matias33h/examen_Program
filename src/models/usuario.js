@@ -23,6 +23,9 @@ const usuarioSchema = new Schema({
         type: String,
         defaul:"user"
     }
+},{
+    versionKey: false,
+    timestamps: true
 })
 module.exports=model('Usuario',usuarioSchema);
 
