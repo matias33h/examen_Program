@@ -23,7 +23,7 @@ try{
 const{uid}= await jwt.verify(token,process.env.SECRET) 
 //se busca el usuario en la base de dato  para saber si pertenece al sistema
 
-const usuario=await User.findById(uid)
+const usuario=await User.findById(uid) //busca el usuario en user que tenga el mismo id del token que en este caso es (uid)token decodificado
 
 if(!usuario.isActive){
 return res.status(401).json({
@@ -33,7 +33,7 @@ msg:'Token no valido - usuario con estado false'
 }
 
 //se añade la informacion del usuario al request para ser usado en el resto del middelware
-req.user=usuario
+req.user=usuario //    es el usuario que tiene el mismo id del token
 
 next()
 }catch(error){

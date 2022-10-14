@@ -15,6 +15,7 @@ const validarJWT = require("../midelware/validarJWT");
 
 
 // router.post("/tareas", postTareas)
+router.get("/tareas/", getTareas)
 router.get("/tareas",[validarJWT],getTareas)
 router.get("/tarea/",[validarJWT],getTareabyUser)
 router.post('/tarea/',[validarJWT],postTareas)

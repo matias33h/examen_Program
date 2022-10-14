@@ -60,10 +60,19 @@ ctrlTareas.putTareas=async (req,res)=>{
 try {
 
     const id=req.params.id;
+    const idUser2 = req.user._id.toString();
 
-    const {fecha,categoria, descripcion, titulo}= req.body;
+    const { descripcion, titulo}= req.body;
 
-    const taskUpdate= await task.findByIdAndUpdate(id,{fecha,categoria, descripcion, titulo})
+    const task2 = await task.findById(id)
+
+    if(idUser2 != task2.idUser.toString()){
+        return res.status(400).json({
+            message: 'No tenes perSiso para cambiar la tarea de otro usuario'
+        })
+    }
+
+    const taskUpdate= await task.findByIdAndUpdate(id,{ descripcion, titulo})
     
     const tareamodifificad = await task.findById(id) //para que me traiga la actualizacion actual
     
