@@ -66,9 +66,9 @@ try {
 
     const task2 = await task.findById(id)
 
-    if(idUser2 != task2.idUser.toString()){
+    if(idUser2 != task2.idUser.toString()){   //conbierte mi objeto a string para comparar los valores
         return res.status(400).json({
-            message: 'No tenes perSiso para cambiar la tarea de otro usuario'
+            message: 'No tenes permiso para cambiar la tarea de otro usuario'
         })
     }
 
@@ -90,20 +90,41 @@ try {
 
 
 ctrlTareas.deleteTareas=async (req,res)=>{
+try {
 
-    let idTareas=req.params.id
+    const id= req.params.id
+    const {_id}= req.user
 
-    try {
-        await task.findByIdAndUpdate(idTareas,{active:false})
-        return res.json('Tarea  eliminada ')
+    console.log(_id)
+    const taskAeliminar = await task.findById(id)
+    
+    
+    
+  
+
+
+
+const tareaSinActualizar= await task.findByIdAndUpdate({_id:id},{isActive:false}) //me tira la 
+
+const tareaEliminada= await task.findById(id)
+
+return res.json({
+     tareaEliminada 
+})
+
+    
+} catch (error) {
+    console.error(error.message)
+    res.send('Error al eliminar la tarea')
+    
+}
+
+
+  
+
         
 
-    } catch (err) {
-        console.log(err.message)
-        return res.status(500).json({
-            msg:'error al eliminar la tarea'
-        })
-    }
+
 
 
 }
