@@ -7,17 +7,19 @@ Tec. en Desarrollo de Software Multiplataforma.
 CREAR UNA CARPETA Y CLONAR EL REPOSITORIO
 GIT CLONE https://github.com/matias33h/examen_Program
 
-Para ejecutar el proyecto, se debe tener instalado Node.js y npm.
-Utilizar versión LTS (Recomendado)
+INSTALAR LAS DEPENDENCIAS CON:
 
-Verificar versión de Node con:
-node -v
-Verificar versión de npm con:
-npm -v
-Para instalar las dependencias que necesita este proyecto, ejecutar el siguiente comando:
-npm install
-Para ejecutar el proyecto, ejecutar el siguiente comando:
-npm run dev
+NPM I 
+
+INSERTO LOS DATOS CON POST: username,password,email
+
+PARA LOGEARME Y CONSEGUIR EL TOKEN INSERTO LOS DATOS CON POST: username,password(me devuelve el token)
+
+CON EL TOKEN CREO UNA TAREA CON POST
+
+LUEGO BUSCO ESA TAREA CON EL MISMO USUARIO QUE LO CREO 
+
+TAMBIEN PUEDE ACTUALIZAR Y ELIMINAR (SOLO EL USUARIO QUE LO CREO)
 
 
 
